@@ -1,0 +1,68 @@
+{
+  "name": "dev-agent-extension",
+  "displayName": "Dev Agent",
+  "description": "AI-powered developer automation agent for VS Code",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "activationEvents": [
+    "onView:devAgentChat"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "dev-agent",
+          "title": "Dev Agent",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "dev-agent": [
+        {
+          "type": "webview",
+          "id": "devAgentChat",
+          "name": "Dev Agent Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "devAgent.runTask",
+        "title": "Dev Agent: Run Task"
+      },
+      {
+        "command": "devAgent.clearHistory",
+        "title": "Dev Agent: Clear Chat History"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "zod": "^3.23.0"
+  },
+  "extensionDependencies": [
+    "github.copilot-chat"
+  ]
+}
